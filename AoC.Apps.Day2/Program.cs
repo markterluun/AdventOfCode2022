@@ -8,7 +8,10 @@ static class Program
         var score = 0;
         foreach (var line in input) {
             var other = line.First().ToHand();
-            var you = line.Last().ToHand();
+            var strategy = line.Last().ToOutcome();
+            var you = strategy.ToHand(other);
+
+            Console.WriteLine($"{other,-12}{strategy,-8}{you}");
 
             score += RockPaperScissors.Play(you, other);
         }
