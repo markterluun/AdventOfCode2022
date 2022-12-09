@@ -5,9 +5,9 @@ namespace AoC.Apps.Day2;
 internal static class Extensions
 {
     internal static Hand ToHand(this char character) => character switch {
-        'A' => Hand.Rock,
-        'B' => Hand.Paper,
-        'C' => Hand.Scissors,
+        'A' or 'X' => Hand.Rock,
+        'B' or 'Y' => Hand.Paper,
+        'C' or 'Z' => Hand.Scissors,
         _ => throw new NotImplementedException()
     };
 
@@ -53,8 +53,8 @@ internal static class Extensions
          *  2 lose
          */
 
-        var relativeScore = a - b;
-        return relativeScore switch {
+        var matrixScore = a - b;
+        return matrixScore switch {
             0 => Outcome.Tie,
             -1 or 2 => Outcome.Lose,
             -2 or 1 => Outcome.Win,
@@ -114,8 +114,8 @@ internal static class Extensions
          * --------------------------------------
          */
 
-        var handHint = (int)strategy - (int)other;
-        return handHint switch {
+        var matrixScore = (int)strategy - (int)other;
+        return matrixScore switch {
             -2 or 2 or 3 => Hand.Rock,
             -3 or 1 or 5 => Hand.Paper,
             -1 or 0 or 4 => Hand.Scissors,

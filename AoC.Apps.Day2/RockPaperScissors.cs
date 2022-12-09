@@ -15,12 +15,13 @@ internal class RockPaperScissors
         Win = 6,
     }
 
-    public static int Play(Hand you, Hand other) {
+    public static Outcome Play(Hand you, Hand other, out int score) {
         var outcome = you.Compare(other);
 
         var handValue = (int)you;
         var outcomeValue = (int)outcome;
-        var score = handValue + outcomeValue;
-        return score;
+        score = handValue + outcomeValue;
+
+        return outcome;
     }
 }
