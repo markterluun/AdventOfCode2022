@@ -1,4 +1,6 @@
-﻿namespace AoC.Apps.Day3;
+﻿using System.Diagnostics;
+
+namespace AoC.Apps.Day3;
 
 static class Program
 {
@@ -6,6 +8,10 @@ static class Program
         var input = File.ReadAllLines("input.txt");
 
         Day1(input);
+        Console.WriteLine();
+
+        Day2(input);
+        Console.WriteLine();
     }
 
     static void Day1(IEnumerable<string> input) {
@@ -18,6 +24,19 @@ static class Program
 
         Console.WriteLine(result);
     }
+
+    static void Day2(IEnumerable<string> input) {
+        var result = input
+            .Chunk(3)
+            .Select(GetCommonCharacters)
+            .AsString()
+            .Select(GetPriority)
+            .Sum();
+
+        Console.WriteLine(result);
+    }
+
+    // Utility methods
 
     static string[] GetCompartments(string rucksack) => rucksack.Length % 2 == 0
         ? (new[] {
