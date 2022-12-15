@@ -7,6 +7,7 @@ static class Program
         var testInput = File.ReadAllLines("input_test.txt");
 
         Day1(input);
+        Day2(input);
     }
 
     static void Day1(IEnumerable<string> input)
@@ -14,6 +15,17 @@ static class Program
         var amountOfOverlaps = input
             .Select(SectionRangePair.Parse)
             .Select(rangePair => rangePair.FullyOverlap())
+            .Where(e => e)
+            .Count();
+
+        Console.WriteLine(amountOfOverlaps);
+    }
+
+    static void Day2(IEnumerable<string> input)
+    {
+        var amountOfOverlaps = input
+            .Select(SectionRangePair.Parse)
+            .Select(rangePair => rangePair.PartiallyOverlap())
             .Where(e => e)
             .Count();
 
@@ -45,6 +57,12 @@ readonly struct SectionRange
         other.First <= Last &&
         other.Last >= First &&
         other.Last <= Last;
+
+    public bool PartiallyContains(SectionRange other) =>
+        (other.First >= First &&
+        other.First <= Last) ||
+        (other.Last >= First &&
+        other.Last <= Last);
 }
 
 readonly struct SectionRangePair
@@ -68,4 +86,7 @@ readonly struct SectionRangePair
 
     public bool FullyOverlap() =>
         First.FullyContains(Second) || Second.FullyContains(First);
+
+    public bool PartiallyOverlap() =>
+        First.PartiallyContains(Second) || Second.PartiallyContains(First);
 }
