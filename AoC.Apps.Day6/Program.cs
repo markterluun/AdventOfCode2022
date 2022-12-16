@@ -7,22 +7,19 @@ static class Program
 {
     static void Main()
     {
-        var input = File.ReadAllLines(".input.txt").Where(line => !string.IsNullOrWhiteSpace(line));
-        var testInput = File.ReadAllLines(".testinput.txt").Where(line => !string.IsNullOrWhiteSpace(line));
+        var input = File.ReadAllLines(".input.txt")[0];
+        var testInput = File.ReadAllLines(".testinput.txt")[0];
 
         Part1(input);
     }
 
-    static void Part1(IEnumerable<string> input) {
-        foreach (var line in input)
-        {
-            Console.WriteLine("Parse line blocks (LINQ)");
-            Benchmark(() => Console.WriteLine(ParseLineBlocks(line, 4)));
-            Console.WriteLine();
+    static void Part1(string input) {
+        Console.WriteLine("Parse line blocks (LINQ)");
+        Benchmark(() => Console.WriteLine(ParseLineBlocks(input, 4)));
+        Console.WriteLine();
 
-            Console.WriteLine("Parse line (array)");
-            Benchmark(() => Console.WriteLine(ParseLine(line, 4)));
-        }
+        Console.WriteLine("Parse line (array)");
+        Benchmark(() => Console.WriteLine(ParseLine(input, 4)));
     }
 
     static void Benchmark(Action action)
