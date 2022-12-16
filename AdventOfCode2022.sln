@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AoC.Shared", "AoC.Shared\Ao
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AoC.Apps.Day6", "AoC.Apps.Day6\AoC.Apps.Day6.csproj", "{09EB237E-F28D-4928-8FA4-BEB1BC465EE9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AoC.Apps.Day7", "AoC.Apps.Day7\AoC.Apps.Day7.csproj", "{2ACF300E-B9CF-41F1-B746-567C8E2FCACC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{09EB237E-F28D-4928-8FA4-BEB1BC465EE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09EB237E-F28D-4928-8FA4-BEB1BC465EE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09EB237E-F28D-4928-8FA4-BEB1BC465EE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2ACF300E-B9CF-41F1-B746-567C8E2FCACC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ACF300E-B9CF-41F1-B746-567C8E2FCACC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ACF300E-B9CF-41F1-B746-567C8E2FCACC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ACF300E-B9CF-41F1-B746-567C8E2FCACC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
