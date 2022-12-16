@@ -2,6 +2,37 @@
 
 public static partial class Extensions { }
 
+// Array
+
+partial class Extensions
+{
+    public static void Shift<T>(this T[] array, int amount, T replacement = default!)
+    {
+        if (amount == 0) return;
+
+        var indice = Enumerable.Range(0, array.Length);
+
+        if (amount > 0) // Shift right/down (0 --> 1, 1 --> 2 etc.)
+        {
+            indice = indice.Reverse().Skip(1);
+            foreach (var index in indice)
+            {
+                array[index + 1] = array[index];
+            }
+            array[0] = replacement;
+        }
+        else // Amount < 0; shift left/up (2 --> 1, 1 --> 0 etc.)
+        {
+            indice = indice.Skip(1);
+            foreach (var index in indice)
+            {
+                array[index - 1] = array[index];
+            }
+            array[^1] = replacement;
+        }
+    }
+}
+
 // IEnumerable
 
 partial class Extensions
