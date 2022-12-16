@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using AoC.Shared;
+using BenchmarkDotNet.Running;
 
 namespace AoC.Apps.Day6;
 
@@ -7,11 +8,15 @@ static class Program
 {
     static void Main()
     {
+#if DEBUG
         var input = File.ReadAllLines(".input.txt")[0];
         var testInput = File.ReadAllLines(".testinput.txt")[0];
 
         Part1(input);
         Part2(input);
+#else
+        BenchmarkRunner.Run<Benchmarks>();
+#endif
     }
 
     static void Part1(string input) {
