@@ -11,6 +11,7 @@ static class Program
         var testInput = File.ReadAllLines(".testinput.txt")[0];
 
         Part1(input);
+        Part2(input);
     }
 
     static void Part1(string input) {
@@ -20,6 +21,11 @@ static class Program
 
         Console.WriteLine("Parse line (array)");
         Benchmark(() => Console.WriteLine(ParseLine(input, 4)));
+    }
+
+    static void Part2(string input)
+    {
+        Console.WriteLine(ParseLine(input, 14));
     }
 
     static void Benchmark(Action action)
