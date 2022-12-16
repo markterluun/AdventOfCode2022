@@ -5,7 +5,11 @@ static class Extensions
     public static string AsString<T>(this IEnumerable<T> values) =>
         values.Aggregate(string.Empty, (a, b) => a + b);
 
-    public static void Push<T>(this Stack<T> stack, IEnumerable<T> values) {
+    public static void Push<T>(this Stack<T> stack, IEnumerable<T> values, bool reverse = false) {
+        if (reverse) {
+            values = values.Reverse();
+        }
+
         foreach (var item in values) {
             stack.Push(item);
         }

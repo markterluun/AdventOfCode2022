@@ -9,11 +9,12 @@ static class Program
         var input = File.ReadAllLines("input.txt");
         var testInput = File.ReadAllLines("inputTest.txt");
 
-        Part1(input);
+        Run(input, false);
+        Run(input, true);
     }
 
-    static void Part1(IEnumerable<string> input) {
-        var stacks = ProcessInput(input);
+    static void Run(IEnumerable<string> input, bool part2) {
+        var stacks = ProcessInput(input, part2);
         var output = stacks
             .Select(stack => stack.Peek())
             .Select(topItem => topItem[1])
@@ -23,7 +24,7 @@ static class Program
 
     // Utility methods
 
-    static List<Stack<string>> ProcessInput(IEnumerable<string> input) {
+    static List<Stack<string>> ProcessInput(IEnumerable<string> input, bool pickupMultiple) {
         var mode = 0; // Should *technically* be an enum but fuck it
         var lists = new List<List<string>>();
         var stacks = new List<Stack<string>>();
@@ -58,7 +59,7 @@ static class Program
                             .ToList();
                     }
 
-                    ParseInstruction(line, ref stacks);
+                    ParseInstruction(line, ref stacks, pickupMultiple);
                     break;
 
                 default:
@@ -84,7 +85,7 @@ static class Program
         }
     }
 
-    static void ParseInstruction(string instruction, ref List<Stack<string>> stacks) {
+    static void ParseInstruction(string instruction, ref List<Stack<string>> stacks, bool pickupMultiple) {
         var parameters = new Regex(@"\d+")
             .Matches(instruction)
             .Cast<Match>()
@@ -97,6 +98,6 @@ static class Program
         var dst = parameters[2] - 1;
 
         var pickup = stacks[src].Pop(amt);
-        stacks[dst].Push(pickup);
+        stacks[dst].Push(pickup, pickupMultiple);
     }
 }
