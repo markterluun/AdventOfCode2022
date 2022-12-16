@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace AoC.Apps.Day5;
 
-static class Program
+static partial class Program
 {
     static void Main() {
         var input = File.ReadAllLines("input.txt");
@@ -86,7 +86,7 @@ static class Program
     }
 
     static void ParseInstruction(string instruction, ref List<Stack<string>> stacks, bool pickupMultiple) {
-        var parameters = new Regex(@"\d+")
+        var parameters = IntFilterRegex()
             .Matches(instruction)
             .Cast<Match>()
             .Select(m => m.Value)
@@ -100,4 +100,7 @@ static class Program
         var pickup = stacks[src].Pop(amt);
         stacks[dst].Push(pickup, pickupMultiple);
     }
+
+    [GeneratedRegex(@"\d+")]
+    private static partial Regex IntFilterRegex();
 }
