@@ -15,7 +15,4 @@ static class Extensions
             throw new ArgumentException($"Unsupported character: {chr}", nameof(chr));
         }
     }
-
-    public static string AsString<T>(this IEnumerable<T> values) =>
-        values.Aggregate(string.Empty, (a, b) => a + b);
 }
