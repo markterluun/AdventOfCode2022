@@ -40,6 +40,12 @@ partial class Extensions
     public static bool None<T>(this IEnumerable<T> values) =>
         !values.Any();
 
+    public static Stack<T> ToStack<T>(this IEnumerable<T> values) =>
+        new(values);
+
+    public static Queue<T> ToQueue<T>(this IEnumerable<T> values) =>
+        new(values);
+
     public static string AsString<T>(this IEnumerable<T> values) =>
         values.Aggregate(string.Empty, (a, b) => a + b);
 
